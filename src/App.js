@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-// import { Counter } from "./features/counter/Counter";
-
 import Home from "./pages/Home/Home";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignupPage from "./pages/SignupPage/SignupPage";
@@ -22,6 +20,7 @@ import OrderSuccess from "./pages/OrderSuccess/OrderSuccess";
 import UserOrderPage from "./pages/UserDetailPage/UserOrderPage";
 import UserProfilePage from "./pages/UserDetailPage/UserProfilePage";
 import { fetchLoggedInUserAsync } from "./features/User/userSlice";
+import Logout from "./features/Authorise/Logout";
 
 const router = createBrowserRouter([
   {
@@ -82,17 +81,24 @@ const router = createBrowserRouter([
     path: "/myProfile",
     element: <UserProfilePage></UserProfilePage>,
   },
+  {
+    path: "/logout",
+    element: <Logout></Logout>,
+  },
 ]);
 
 function App() {
+
   const user = useSelector(selectRegisteredUser);
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (user) {
       dispatch(getItemsByUserId(user.id));
       dispatch(fetchLoggedInUserAsync(user.id));
     }
   }, [dispatch, user]);
+  
   return (
     <div className="App">
       <RouterProvider router={router} />

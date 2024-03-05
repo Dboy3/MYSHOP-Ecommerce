@@ -14,6 +14,7 @@ function UserOrders() {
   console.log("orders : ", orders);
 
   useEffect(() => {
+    // jab me signout karunga then user becomes null
     dispatch(fetchRegisteredUserOrderAsync(user.id));
   }, [dispatch]);
 
@@ -21,6 +22,7 @@ function UserOrders() {
     <div>
       {orders.map((order) => (
         <div>
+          {console.log("printing the order " , {order})}
           <div className="mx-auto mt-24 bg-white max-w-7xl px-4 sm:px-6 lg:px-9">
             {/* main list  */}
             <div className="border-t border-gray-200 px-4 py-8 sm:px-6">
@@ -81,6 +83,7 @@ function UserOrders() {
                 <div className="flex gap-x-4">
                   <div className="min-w-0 flex-auto">
                     <p className="text-sm font-semibold leading-6 text-gray-900">
+                      {console.log(order.selectedAdd.name)}
                       {order.selectedAdd.name}
                     </p>
                     <p className="mt-1 truncate text-xs leading-5 text-gray-500">

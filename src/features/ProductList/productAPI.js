@@ -1,7 +1,7 @@
 // A mock function to mimic making an async request for data
 export default function fetchAllProducts() {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:8080/products");
+    const response = await fetch("https://severdeployment.onrender.com/products");
     const data = await response.json();
     resolve({ data });
   });
@@ -10,7 +10,7 @@ export default function fetchAllProducts() {
 export function fetchProductById(id) {
   console.log("the received id : " , id );
   return new Promise(async (resolve) => {
-    const response = await fetch(`http://localhost:8080/products/${id}`);
+    const response = await fetch(`https://severdeployment.onrender.com/products/${id}`);
     const data = await response.json();
     resolve({ data });
   });
@@ -41,7 +41,7 @@ export function fetchProductsByFilters(filter, sort, pagination) {
   console.log(query);
 
   return new Promise(async (resolve) => {
-    const response = await fetch(`http://localhost:8080/products?${query}`);
+    const response = await fetch(`https://severdeployment.onrender.com/products?${query}`);
     const data = await response.json();
     // this is feature of json server to get total items
     const totalItems = await response.headers.get("X-Total-Count");
@@ -51,14 +51,15 @@ export function fetchProductsByFilters(filter, sort, pagination) {
 
 export function fetchCategories() {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:8080/categories");
+    const response = await fetch("https://severdeployment.onrender.com/categories");
     const data = await response.json();
     resolve({ data });
   });
 }
+
 export function fetchAllBrands() {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:8080/brands ");
+    const response = await fetch("https://severdeployment.onrender.com/brands ");
     const data = await response.json();
     resolve({ data });
   });

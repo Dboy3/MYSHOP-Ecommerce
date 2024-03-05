@@ -1,7 +1,7 @@
 // this take input
 export function addToCart(item) {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:8080/cart", {
+    const response = await fetch("https://severdeployment.onrender.com/cart", {
       method: "POST",
       body: JSON.stringify(item),
       headers: { "content-type": "application/json" },
@@ -14,7 +14,7 @@ export function addToCart(item) {
 // updating the item
 export function updateCart(update) {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:8080/cart/" + update.id, {
+    const response = await fetch("https://severdeployment.onrender.com/cart/" + update.id, {
       method: "PATCH",
       body: JSON.stringify(update),
       headers: { "content-type": "application/json" },
@@ -27,7 +27,7 @@ export function updateCart(update) {
 // delete the item
 export function deleteCartItem(id) {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:8080/cart/" + id, {
+    const response = await fetch("https://severdeployment.onrender.com/cart/" + id, {
       method: "DELETE",
       headers: { "content-type": "application/json" },
     });
@@ -39,7 +39,7 @@ export function deleteCartItem(id) {
 // this give me output for given user
 export function fetchItemsbyUserId(userId) {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:8080/cart?user=" + userId);
+    const response = await fetch("https://severdeployment.onrender.com/cart?user=" + userId);
     const data = await response.json();
     resolve({ data });
   });

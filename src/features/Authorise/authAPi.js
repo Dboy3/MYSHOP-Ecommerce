@@ -16,7 +16,8 @@ export function checkUser(loginInfo) {
   return new Promise(async (resolve, reject) => {
     const email = loginInfo.email;
     const password = loginInfo.password;
-    const response = await fetch("http://localhost:8080/users?email=" + email);
+    // const response = await fetch("http://localhost:8080/users?email=" + email);
+    const response = await fetch("https://severdeployment.onrender.com/users?email=" + email);
     const data = await response.json();
     // console.log(data);
     if (data.length) {
@@ -29,4 +30,12 @@ export function checkUser(loginInfo) {
       reject({ message: "User not found" });
     }
   });
+}
+
+export function signOut ( userID )
+{
+  return new Promise ( async (resolve , reject )=> {
+    // TODO : sever will remove user session info 
+    resolve({data : 'success'})
+  })
 }
